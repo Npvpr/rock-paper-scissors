@@ -3,7 +3,7 @@ let player_win = com_win = 0;
 let message;
 
 // Greet
-alert("Hello! Welcome to Rock Paper Scissors Game!!!");
+alert("Hello! Welcome to Rock Paper Scissors Game!!!\nRules: First to 5 wins!");
 choose();
 
 function choose(){
