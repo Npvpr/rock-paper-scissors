@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(0, 255, 225, 0.3);
+}
+
+.titleDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.roundDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.playDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.comName{
+    display: flex;
+    justify-content: center;
+}
+
+.vsDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playerName{
+    display: flex;
+    justify-content: center;
+}
+
+.playerImg{
+    display: flex;
+    justify-content: center;
+}
+
+.playerBtns > button{
+    width: 70px;
+    height: 40px;
+    border-radius: 15px;
+}
+
+.playerConfirmBtn{
+    display: flex;
+    justify-content: end;
+}
