@@ -1,6 +1,6 @@
-let foo = document.querySelectorAll('.ftester')
+let foo = document.querySelector('.rockBtn')
 let bar = document.querySelectorAll('#stester')
-console.log(foo, bar)
+console.log(foo)
 // let choices = ["rock", "paper", "scissors"];
 // let player_win = com_win = 0;
 // let message;

@@ -11,6 +11,7 @@ body{
 .titleDiv{
     display: flex;
     justify-content: center;
+    margin: 30px 0;
 }
 
 .roundDiv{
@@ -21,16 +22,24 @@ body{
 .playDiv{
     display: flex;
     justify-content: space-around;
+    margin: 30px 0;
 }
 
 img{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
 }
 
 .comName{
     display: flex;
     justify-content: center;
+}
+
+.comImg{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
 }
 
 .vsDiv{
@@ -48,15 +57,19 @@ img{
 .playerImg{
     display: flex;
     justify-content: center;
+    margin: 30px 0;
 }
 
 .playerBtns > button{
     width: 70px;
     height: 40px;
     border-radius: 15px;
+    border-width: 3px;
+    margin: 0 10px 20px;
+    background-color: rgba(0, 145, 255, 0.3);
 }
 
-.playerConfirmBtn{
-    display: flex;
-    justify-content: end;
+.playerBtns > button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 145, 255, 0.5);
 }
