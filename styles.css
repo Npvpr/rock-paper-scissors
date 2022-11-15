@@ -23,12 +23,14 @@ body{
     display: flex;
     justify-content: space-around;
     margin: 30px 0;
+    height: 350px;
 }
 
 img{
     width: 200px;
     height: 200px;
     border-radius: 50px;
+    border: solid 3px;
 }
 
 .comName{
@@ -36,7 +38,7 @@ img{
     justify-content: center;
 }
 
-.comImg{
+.comImgDiv{
     display: flex;
     justify-content: center;
     margin: 30px 0;
@@ -49,12 +51,16 @@ img{
     flex-direction: column;
 }
 
+.playerDiv{
+    width: 300px;
+}
+
 .playerName{
     display: flex;
     justify-content: center;
 }
 
-.playerImg{
+.playerImgDiv{
     display: flex;
     justify-content: center;
     margin: 30px 0;
@@ -72,4 +78,38 @@ img{
 .playerBtns > button:hover{
     cursor: pointer;
     background-color: rgba(0, 145, 255, 0.5);
+}
+
+.announceDiv{
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    border: solid 3px;
+    border-radius: 20px;
+    padding: 10px 0;
+    margin: 0 35vw;
+    background-color: rgba(255, 255, 0, 0.5);
+}
+
+.announcement{
+    margin: 20px;
+}
+
+.announceBtns{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.announceBtns > button{
+    width: 70px;
+    height: 40px;
+    border-radius: 15px;
+    border-width: 3px;
+    background-color: rgba(0, 255, 255, 0.3);
+}
+
+.announceBtns > button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 255, 255, 0.5);
 }

@@ -1,6 +1,85 @@
-let foo = document.querySelector('.rockBtn')
-let bar = document.querySelectorAll('#stester')
-console.log(foo)
+// make com div's width same as player div's, since player div's width is chaning due to buttons
+let comDiv = document.querySelector('.comDiv')
+let playerDiv = document.querySelector('.playerDiv')
+comDiv.style.width = playerDiv.offsetWidth + "px";
+
+// animation function (changing images)
+let comImg = document.querySelector('.comImg')
+let playerImg = document.querySelector('.playerImg')
+let i = 0;
+let images = ["Rock.png", "Paper.png", "Scissors.png"]
+function animate(img, imager){
+    img.src = "./images/" + imager + images[i%3];
+    i++;
+}
+
+// choose function
+let announcement = document.querySelector('.announcement')
+let announceBtns = document.querySelectorAll('.announceBtns > button')
+let playerBtns = document.querySelectorAll('.playerBtns > button')
+let comAnimating, playerAnimating;
+function choose(){
+    // start both animations
+    comAnimating = setInterval(() => animate(comImg, "com"), 150);
+    playerAnimating = setInterval(() => animate(playerImg, "player"), 150);
+    // change announcement "tell player to choose"
+    announcement.textContent = "Please Choose Rock OR Paper OR Scissors!"
+    // hide announcement buttons
+    announceBtns.forEach(element => {
+        element.style.display = "none";
+    });
+    // when player click one of the player buttons
+    playerBtns.forEach(element => {
+        element.addEventListener("click", e => {
+            play(e);
+        })
+    })
+}
+choose();
+// play function
+function play(e){
+    // player's choice
+    let playerChoice = e.target.className.toString().slice(0,-3);
+    let comChoice = images[Math.floor(Math.random()*3)].slice(0,-4)
+    console.log(playerChoice, comChoice)
+    // hide all buttons
+    playerBtns.forEach(element => {
+        element.style.display = "none"
+    })
+
+    // stop player image fast animation
+    // clearInterval(playerAnimating);
+    // // stop com fast animation
+    // clearInterval(comAnimating);
+    // why the speed is not the same for 2 setintervals???
+    // I found out that has something to do with you stopping one interval but kept running the other
+    // Because if you comment out the below line(also set player setInterval to same ms as com), you will see they run at the same time
+    // clearInterval(comAnimating);
+    // playerAnimating is still not working correctly, so I slowed both
+    // playerAnimating = setInterval(() => animate(playerImg, "player"), 130);
+    // // slow com animation
+    // comAnimating = setInterval(() => animate(comImg, "com"), 130);
+
+    // because of annoying different speeds(above code), I just stopped without slowing
+    // after 2 sec stop player animation at player choice
+    setTimeout(function(){
+        clearInterval(playerAnimating);
+        playerImg.src = "./images/player" + playerChoice.slice(0,1).toUpperCase() + playerChoice.slice(1,) + ".png";    
+        // after another 2 sec stop com animation at com choice
+        setTimeout(function(){
+            clearInterval(comAnimating);
+            comImg.src = "./images/com" + comChoice + ".png";
+        }, 3000)
+    }, 500)
+    // compare results
+    // show red and green colors for win and lose
+    // change announcement
+    // show announcement buttons
+    // depends on the button, change wins and round
+    // call choose function
+}
+
+
 // let choices = ["rock", "paper", "scissors"];
 // let player_win = com_win = 0;
 // let message;
