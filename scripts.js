@@ -16,6 +16,27 @@ let resetBtn = document.querySelector('.resetBtn')
 let nextBtn = document.querySelector('.nextBtn')
 let playerBtns = document.querySelectorAll('.playerBtns > button')
 
+// adding functions to announcement buttons
+resetBtn.addEventListener("click", () => {
+    round = 1;
+    comWon = 0;
+    playerWon = 0;
+    choose();
+})
+nextBtn.addEventListener("click", () => {
+    round++;
+    console.log(round)
+    choose();
+})
+
+// adding function to player buttons
+playerBtns.forEach(element => {
+element.style.display = "inline";
+element.addEventListener("click", e => {
+    play(e);
+    })
+})
+
 // make com div's width same as player div's, since player div's width is chaning due to buttons
 let comDiv = document.querySelector('.comDiv')
 let playerDiv = document.querySelector('.playerDiv')
@@ -51,12 +72,9 @@ function choose(){
     announceBtns.forEach(element => {
         element.style.display = "none";
     });
-    // when player click one of the player buttons
+    // show player buttons
     playerBtns.forEach(element => {
         element.style.display = "inline";
-        element.addEventListener("click", e => {
-            play(e);
-        })
     })
 }
 
@@ -96,42 +114,19 @@ function roundEnd(){
     });
     comWonDiv.textContent = comWon;
     playerWonDiv.textContent = playerWon;
-    resetBtn.addEventListener("click", () => {
-        round = 1;
-        comWon = 0;
-        playerWon = 0;
-        choose();
-    })
-    nextBtn.addEventListener("click", () => {
-        round++;
-        choose();
-    })
 }
-
 
 // play function
 function play(e){
     // player's choice
     let playerChoice = e.target.className.toString().slice(0,1).toUpperCase() + e.target.className.toString().slice(1,-3);
     let comChoice = images[Math.floor(Math.random()*3)].slice(0,-4)
-    console.log(playerChoice == comChoice)
     // hide all buttons
     playerBtns.forEach(element => {
         element.style.display = "none"
     })
-
-    // stop player image fast animation
-    // clearInterval(playerAnimating);
-    // // stop com fast animation
-    // clearInterval(comAnimating);
-    // why the speed is not the same for 2 setintervals???
-    // I found out that has something to do with you stopping one interval but kept running the other
-    // Because if you comment out the below line(also set player setInterval to same ms as com), you will see they run at the same time
-    // clearInterval(comAnimating);
-    // playerAnimating is still not working correctly, so I slowed both
-    // playerAnimating = setInterval(() => animate(playerImg, "player"), 130);
-    // // slow com animation
-    // comAnimating = setInterval(() => animate(comImg, "com"), 130);
+    // some text for waiting
+    announcement.textContent = "The computer is choosing random!"
 
     // because of annoying different speeds(above code), I just stopped without slowing
     // after 2 sec stop player animation at player choice
@@ -157,87 +152,3 @@ function play(e){
 }
 
 choose();
-
-// let choices = ["rock", "paper", "scissors"];
-// let player_win = com_win = 0;
-// let message;
-
-// // Greet
-// alert("Hello! Welcome to Rock Paper Scissors Game!!!\nRules: First to 5 wins!");
-// choose();
-
-// function choose(){
-//     if (player_win>=5){
-//         player_final_won();
-//     }else if (com_win>=5){
-//         com_final_won();
-//     }else{
-//         // Player choose
-//         let player_choice = prompt("Please choose Rock Paper Scissors?").toLowerCase();
-//         // Random Com
-//         let com_choice = choices[Math.floor(Math.random()*choices.length)]
-
-//         // call compare
-//         compare(player_choice, com_choice);
-//     }
-// }
-
-// // Compare
-// function compare(player_choice, com_choice){
-//     // Wrong Typed
-//     if (!choices.includes(player_choice)){
-//         message = "Sorry what you chose was not in  the choices!";
-//     }else{
-//         // Tie
-//         if (player_choice === com_choice){
-//             message = "Woah! It was a tie";
-//         }
-//         // Rock VS Paper
-//         else if ([choices[0],choices[1]].includes(player_choice) && [choices[0],choices[1]].includes(com_choice)){
-//             if(player_choice === "paper"){
-//                 player_round_win();
-//             }else if(com_choice === "paper"){
-//                 com_round_win();
-//             }
-//         }
-//         // Paper VS Scissors
-//         else if ([choices[1],choices[2]].includes(player_choice) && [choices[1],choices[2]].includes(com_choice)){
-//             if(player_choice === "scissors"){
-//                 player_round_win();
-//             }else if(com_choice === "scissors"){
-//                 com_round_win();
-//             }
-//         }
-//         // Rock VS Scissors
-//         else if ([choices[0],choices[2]].includes(player_choice) && [choices[0],choices[2]].includes(com_choice)){
-//             if(player_choice === "rock"){
-//                 player_round_win();
-//             }else if(com_choice === "rock"){
-//                 com_round_win();
-//             }
-//         }
-//         message += `\nYou chose "${player_choice}" and Computer chose "${com_choice}"\nWin: ${player_win}  Lose: ${com_win}`
-//     }
-    
-//     alert(message);
-//     choose();
-// }
-
-
-// // Result
-// function player_round_win(){
-//     player_win++;
-//     message = "Yay! You won!"
-// }
-// function com_round_win(){
-//     com_win++;
-//     message = "Oops! You lost!"
-// }
-
-// // Final Result
-// function player_final_won(){
-//     alert("Wow! You finally won!!! Congratulations!!!")
-// }
-// function com_final_won(){
-//     alert("Oh NO!!! You lost!!! Better luck next time!")
-// }
