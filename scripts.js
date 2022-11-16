@@ -133,7 +133,7 @@ function play(e){
     setTimeout(function(){
         clearInterval(playerAnimating);
         playerImg.src = "./images/player" + playerChoice.slice(0,1).toUpperCase() + playerChoice.slice(1,) + ".png";    
-        // after another 2 sec stop com animation at com choice
+        // after another 0 sec stop com animation at com choice
         setTimeout(function(){
             clearInterval(comAnimating);
             comImg.src = "./images/com" + comChoice + ".png";
@@ -147,7 +147,7 @@ function play(e){
             }else{
                 lost();
             }
-        }, 2000)
+        }, 0)
     }, 500)
 }
 
